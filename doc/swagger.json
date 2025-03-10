@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "SPOTSURE",
-    "description": "This API Specification for Parking Reservation",
+    "title": "RWANDAN-KICKS",
+    "description": "This API Specification for E-Commerce",
     "contact": {
       "email": "mireilleirafasha@gmail.com"
     },
@@ -13,13 +13,13 @@
     "version": "1.0.0"
   },
   "externalDocs": {
-    "url": "https://github.com/mireilleIrafasha25/SpotSure-Backend.git",
+    "url": "https://github.com/mireilleIrafasha25/Rwandan-Kicks-Backend.git",
     "description": "Find more info here"
   },
-  "basePath": "/SpotSure",
+  "basePath": "/Rwandan_Kicks",
   "servers": [
     {
-      "url": "http://localhost:4000",
+      "url": "http://localhost:4030",
       "description": "Local server"
     },
     {
@@ -33,8 +33,8 @@
   ],
   "tags": [
     {
-      "name": "SpotSure",
-      "description": "Operation pretaining to Parking Reservation"
+      "name": "Rwandan Kicks",
+      "description": "Operation pretaining to E-commerce called Rwandan-kicks"
     }
   ],
   "paths": {
@@ -689,39 +689,6 @@
           }
         },
         "required":["email","contact","message"]
-      },
-      "Product":{
-        "type":"object",
-        "properties":{
-          "name":{
-            "type":"string",
-            "description":"name of the product"
-          },
-          "Max_price":{
-            "type":"number",
-            "description":"Maximum price of the product"
-          },
-          "Min_price":{
-            "type":"number",
-            "description":"Minimum price of the product"
-          },
-          "description":{
-            "type":"string",
-            "description":"description of the product"
-          },
-          "category":{
-            "type":"string",
-            "description":"category of the product"
-          },
-          "rating":{
-            "type":"number",
-            "description":"rating of the product"
-          },
-          "colors":{
-            "type":"string",
-            "description":"colors of the product"
-          }
-        }
       }
       
      

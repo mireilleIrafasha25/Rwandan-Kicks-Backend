@@ -20,7 +20,7 @@ const corsOptions = {
 async function loadDocumentation() {
   try {
     const data = await fs.readFile(new URL("./doc/swagger.json", import.meta.url), "utf-8");
-    // console.log("Swagger file loaded successfully!"); // Debugging log
+    console.log("Swagger file loaded successfully!"); // Debugging log
     return JSON.parse(data);
   } catch (error) {
     // console.error("Error loading Swagger JSON:", error);
@@ -60,7 +60,7 @@ app.use((req, res, next) => {
 });
     console.log("Connected to DB");
 
-    app.use("/SpotSure", router);
+    app.use("/Rwandan_Kicks", router);
     
 
     app.listen(process.env.PORT, () => {
