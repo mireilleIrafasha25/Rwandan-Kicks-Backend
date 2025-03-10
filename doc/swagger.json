@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "RWANDAN-KICKS",
-    "description": "This API Specification for E-Commerce",
+    "description": "E-commerce API for managing users, products, and orders.",
     "contact": {
       "email": "mireilleirafasha@gmail.com"
     },
@@ -34,9 +34,17 @@
   "tags": [
     {
       "name": "Rwandan Kicks",
-      "description": "Operation pretaining to E-commerce called Rwandan-kicks"
+      "description": "E-commerce API for managing users, products, and orders."
     }
   ],
+  
+  "securityDefinitions": {
+  "bearerAuth": {
+    "type": "apiKey",
+    "name": "Authorization",
+    "in": "header"
+  }
+},
   "paths": {
     "/user/Test":{
       "get":{
@@ -402,6 +410,69 @@
     }
   }
 },
+"/product/addProduct": {
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Add a new product",
+        "description": "add a new product with  the provided details",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "Bearer token (format: Bearer <your_token>)"
+          },
+          {
+            "name": "category",
+            "in": "formData",
+            "required": true,
+            "type":"string"
+            
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "required": true,
+            "type":"string"
+            
+          },
+          {
+            "name": "image",
+            "in": "formData",
+            "required": true,
+            "type":"file"
+           
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "required": true,
+            "type":"string"
+           
+          },
+          {
+            "name": "price",
+            "in": "formData",
+            "required": true,
+            "type":"number"
+           
+          }
+          
+        ],
+        "responses": {
+          "201": {
+            "description": "Product added successfully"
+           
+          },
+          "401": {
+            "description": "Unauthorized - No Token Provided"
+          }
+        }
+      }
+    }, 
           "/contact/add":{
                 "post":{
                   "tags":["Contact Us"],
