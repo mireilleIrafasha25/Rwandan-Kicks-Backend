@@ -46,7 +46,7 @@ const userSchema = new schema({
 
 // Ensure only one admin exists
 userSchema.pre("save", async function (next) {
-    if (this.role === "admin") {
+    if (this.role === "admin" && this.isNew) {  // ✅ Only check when creating a NEW admin
         const existingAdmin = await mongoose.model("User").findOne({ role: "admin" });
         if (existingAdmin) {
             const error = new Error("An admin already exists. You cannot create another one.");
@@ -55,6 +55,7 @@ userSchema.pre("save", async function (next) {
     }
     next();
 });
+
 
 const UserModel = mongoose.model("User", userSchema);
 export default UserModel;

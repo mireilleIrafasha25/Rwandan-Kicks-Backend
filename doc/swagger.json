@@ -356,6 +356,52 @@
         }
   }
 },
+"/user/deleteUser/{id}": {
+  "delete": {
+    "tags": [
+      "Users"
+    ],
+    "summary": "Delete a user",
+    "description": "Delete a user",
+    "parameters": [
+      {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    ],
+    "responses":{
+      "200":{
+        "description":"Delete a user",
+        "content":{
+          "application/json":{
+            "schema":{
+              "$ref":"#/components/schemas/User"
+            }
+          }
+        }
+      },
+      "404":{
+        "description":"user not found",
+        "content":{
+          "application/json":{
+            "schema":{
+              "type":"object",
+              "properties":{
+                "message":{
+                  "type":"string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+},
           "/contact/add":{
                 "post":{
                   "tags":["Contact Us"],
@@ -573,11 +619,7 @@
       "User": {
         "type": "object",
         "properties": {
-          "Firstname": {
-            "type": "string",
-            "description": "name of the User"
-          },
-          "Lastname": {
+          "Name": {
             "type": "string",
             "description": "name of the User"
           },
@@ -595,14 +637,13 @@
           },
           "role": {
             "type": "string",
-            "enum":["admin","user"],
+            "enum":["buyer","seller","admin"],
             "description": "role of the User",
-            "default": "user"
+            "default": "buyer"
           }
         },
         "required": [
-          "Firstname",
-          "Lastname",
+          "Name",
           "password",
           "email",
           "role",

@@ -20,10 +20,10 @@ const corsOptions = {
 async function loadDocumentation() {
   try {
     const data = await fs.readFile(new URL("./doc/swagger.json", import.meta.url), "utf-8");
-    console.log("Swagger file loaded successfully!"); // Debugging log
+    // console.log("Swagger file loaded successfully!");
     return JSON.parse(data);
   } catch (error) {
-    // console.error("Error loading Swagger JSON:", error);
+    console.error("Error loading Swagger JSON:", error);
     return null; // Prevents app crash
   }
 }
