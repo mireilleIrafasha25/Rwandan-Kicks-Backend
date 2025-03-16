@@ -497,7 +497,7 @@
         }
       }
     },
-    "/product/updateProduct":{
+    "/product/updateProduct/{id}":{
       "put":{
         "tags":["Products"],
         "summary":"Update a product",
@@ -540,6 +540,66 @@
           },
           "401":{
             "description":"Unauthorized - No Token Provided"
+          }
+        }
+      }
+    },
+    "/product/getProductById/{id}":{
+      "get":{
+        "tags":["Products"],
+        "summary":"Get a product by id",
+        "description":"Get a product by id",
+        "parameters":[
+          {
+            "name":"id",
+            "in":"path",
+            "required":true,
+            "type":"string"
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"product found",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/Product"
+                }
+              }
+            },
+            "404":{
+              "description":"product not found"
+            }
+          }
+        }
+      }
+    },
+    "/product/deleteProduct/{id}":{
+      "delete":{
+        "tags":["Products"],
+        "summary":"Delete a product",
+        "description":"Delete a product",
+        "parameters":[
+          {
+            "name":"id",
+            "in":"path",
+            "required":true,
+            "type":"string"
+          },
+          {
+            "name":"Authorization",
+            "in":"header",
+            "required":true,
+            "type":"string",
+            "description":"Bearer token (format: Bearer <your_token>)"
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"product deleted successfully"
+          },
+          "404":{
+            "description":"product not found"
           }
         }
       }
