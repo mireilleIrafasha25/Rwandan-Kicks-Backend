@@ -472,7 +472,78 @@
           }
         }
       }
-    }, 
+    },
+    "/product/GetProducts" :{
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Get all products",
+        "description": "Get all products",
+        "responses": {
+          "200": {
+            "description": "All products",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Product"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product/updateProduct":{
+      "put":{
+        "tags":["Products"],
+        "summary":"Update a product",
+        "description":"Update a product",
+        "parameters":[
+          {
+            "name":"Authorization",
+            "in":"header",
+            "required":true,
+            "type":"string",
+            "description":"Bearer token (format: Bearer <your_token>)"
+
+          },
+          {
+            "name":"id",
+            "in":"path",
+            "required":true,
+            "type":"string"
+          },
+          {
+            "name":"image",
+            "in":"formData",
+            "required":true,
+            "type":"file"
+          },
+          {
+            "name":"body",
+            "in":"body",
+            "schema":{
+              "ref":"#/components/schemas/product"
+            },
+            "required":true
+            
+          }
+        
+        ],
+        "responses":{
+          "200":{
+            "description":"product updated successfully"
+          },
+          "401":{
+            "description":"Unauthorized - No Token Provided"
+          }
+        }
+      }
+    },
           "/contact/add":{
                 "post":{
                   "tags":["Contact Us"],
