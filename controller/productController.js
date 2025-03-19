@@ -113,12 +113,12 @@ export const DeleteProduct=asyncWrapper(async(req,res,next)=>
     })
 })
 
-export const GetProductById=asyncWrapper(async(req,res,next)=>
+export const GetProductByName=asyncWrapper(async(req,res,next)=>
 {
-    const id = req.params.id; 
+    const name= req.params.name; 
     
 
-    const product = await ProductModel.findById({ id });
+    const product = await ProductModel.findOne({ name});
     if(!product)
     {
         return next(new NotFoundError('Product not found'));

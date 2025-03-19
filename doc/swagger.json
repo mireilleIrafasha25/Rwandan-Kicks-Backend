@@ -544,14 +544,14 @@
         }
       }
     },
-    "/product/getProductById/{id}":{
+    "/product/getProductByName/{name}":{
       "get":{
         "tags":["Products"],
-        "summary":"Get a product by id",
-        "description":"Get a product by id",
+        "summary":"Get a product by name",
+        "description":"Get a product by name",
         "parameters":[
           {
-            "name":"id",
+            "name":"name",
             "in":"path",
             "required":true,
             "type":"string"
